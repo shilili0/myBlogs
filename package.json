@@ -16,5 +16,8 @@
   "devDependencies": {
     "vuepress": "^1.0.0",
     "@vuepress/theme-blog": "^1.0.0"
+  },
+  "dependencies": {
+    "ant-design-vue": "^1.4.5"
   }
 }

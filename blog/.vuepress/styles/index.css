@@ -1,0 +1,13 @@
+.footer[data-v-a69b5ef8] {
+    height: 60px;
+    box-sizing: border-box;
+    background-color: #000;
+    color: #fff;
+    display: -webkit-box;
+    display: flex;
+    padding: 15px 32px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
