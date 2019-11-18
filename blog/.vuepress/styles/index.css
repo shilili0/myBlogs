@@ -1,4 +1,13 @@
-.footer[data-v-a69b5ef8] {
+#app{
+    min-height: 100%;
+}
+.content-wrapper{
+    width: 70%;
+    max-width: 1000px;
+    margin:0 auto;
+    padding: 140px 15px 80px 15px;
+} 
+.footer {
     height: 60px;
     box-sizing: border-box;
     background-color: #000;
@@ -10,4 +19,15 @@
     bottom: 0;
     right: 0;
     left: 0;
+    z-index: 999;
+}
+.ui-post-summary,.ui-post-date {
+    color: rgba(0, 0, 0, 0.65);
+    font-family: auto;
+}
+.content__default:not(.custom) > *:first-child{
+    margin-top: 0 !important;
+}
+a{
+    text-decoration:none!important;
 }

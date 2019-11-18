@@ -5,22 +5,18 @@
         <a-card hoverable>
           <div class="avatar-infos">
             <a-avatar
-              :size="64"
-              src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                :size="64"
+                src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
             />
             <p>诗与远方</p>
             <p>https://shilili0.github.io/myBlogs/</p>
           </div>
           <div class="infos-base">
-            <p>
-              <a-icon type="environment" />地址：浙江杭州
-            </p>
-            <p>
-              <a-icon type="environment" />职位：前端开发
-            </p>
+            <p> <a-icon type="environment" /> 地址：浙江杭州 </p>
+            <p> <a-icon type="environment" /> 职位：前端开发 </p>
           </div>
           <div class="infos-tags">
-            <h3>博客分类</h3>
+              <h3>博客分类</h3>
             <section class="tags" v-if="this.$site.themeConfig.tags&&tags&&tags.length>0">
               <span
                 v-for="taginfo in tagsAll"
@@ -39,28 +35,12 @@
         </a-card>
       </a-col>
       <a-col :span="16">
-        <a-tabs>
-          <a-tab-pane :tab="`${taginfo.tag}(${taginfo.number})`"
-            :key="taginfo.tag"
-            v-for="taginfo in tagsAll">
-           <!--  {{taginfo.tag}}({{taginfo.number}}) -->
-            <div v-if="taginfo.otherInfo && taginfo.otherInfo.length > 0">
-              <div class="ui-post" v-for="info in taginfo.otherInfo">
-                <div class="ui-post-title">
-                  <a :href="`/myBlogs${info.path}`" class="nav-link">{{info.title}}</a>
-                </div>
-                <div class="ui-post-summary">{{info.summary}}</div>
-                <div class="ui-post-author">
-                  <span><a-icon type="environment" /> {{info.frontmatter.author}} in {{info.frontmatter.location}}</span>
-                </div>
-                <div class="ui-post-date">
-                  <span><a-icon type="clock-circle" /> {{info.frontmatter.date}}</span>
-                </div>
-              </div>
-            </div>
-          </a-tab-pane>
-          <a-button slot="tabBarExtraContent">添加分类</a-button>
-        </a-tabs>
+          <a-tabs>
+            <a-tab-pane :tab="`${taginfo.tag}(${taginfo.number})`" :key="taginfo.tag"  v-for="taginfo in tagsAll">{{taginfo.tag}}({{taginfo.number}})</a-tab-pane>
+           <!--  <a-tab-pane tab="Tab 2" key="2">Content of tab 2</a-tab-pane>
+            <a-tab-pane tab="Tab 3" key="3">Content of tab 3</a-tab-pane> -->
+            <a-button slot="tabBarExtraContent">Extra Action</a-button>
+          </a-tabs>
       </a-col>
     </a-row>
   </div>
@@ -76,8 +56,7 @@ import {
   Col,
   Avatar,
   Icon,
-  Tag,
-  Tabs
+  Tag,Tabs
 } from "ant-design-vue";
 Vue.use(Drawer);
 Vue.use(Button);
@@ -88,7 +67,7 @@ Vue.use(Avatar);
 Vue.use(Icon);
 Vue.use(Tag);
 Vue.use(Tabs);
-import Article from "./Article";
+import Article from './Article'
 export default {
   data() {
     return {
@@ -97,12 +76,11 @@ export default {
       routes: [],
       tg: "",
       info: [],
-      tagsInfos: [],
     };
   },
-  components: { Article },
+  components: {Article},
   mounted() {
-    //当路由?tag='xxx'时能自动跳转到对应内容
+      //当路由?tag='xxx'时能自动跳转到对应内容
     let tag = this.$route.query.tag;
     if (tag) {
       this.change(tag);
@@ -130,13 +108,11 @@ export default {
     },
     tagsAll() {
       //核心代码，整合markdown中tags的数目
-      let allTags = [], _this = this;
+      let allTags = [];
       this.$site.pages.forEach(v => {
         if (v.frontmatter.tags) {
           allTags.push(v.frontmatter.tags);
-          this.tagsInfos.push(v)
         } else if (v.frontmatter.tag) {
-          this.tagsInfos.push(v)
           allTags.push(v.frontmatter.tag);
         }
       });
@@ -145,20 +121,8 @@ export default {
       return flatTags.reduce((res, v) => {
         let o = {};
         o.tag = v;
-        o.otherInfo = [],
         o.number = allTags.filter(value => value === v).length;
-        for(var i = 0; i < _this.tagsInfos.length; i++){
-          let infos= _this.tagsInfos[i];
-          var tags = '';
-          if (infos.frontmatter.tags && infos.frontmatter.tags.indexOf(v)>-1) {
-           o.otherInfo.push(infos)
-          } else if (infos.frontmatter.tag && infos.frontmatter.tag.indexOf(v)>-1) {
-            o.otherInfo.push(infos)
-          }
-         
-        }
         res.push(o);
-        console.log(res)
         return res;
       }, []);
     },
@@ -197,28 +161,15 @@ export default {
 };
 </script>
 <style>
-.ant-tag {
-  padding: 5px 10px;
-  height: auto;
-  /* line-height: 1.5; */
-  margin-bottom: 10px;
-  font-size: 14px;
+.ant-tag{
+    padding: 5px 10px;
+    height: auto;
+    /* line-height: 1.5; */
+    margin-bottom: 10px;
+    font-size: 14px;
 }
-.avatar-infos {
-  text-align: center;
-  font-size: 14px;
-}
-.ui-post-title{
-  padding: 10px 16px;
-}
-.ui-post-title a{
-  font-size: 20px;
-  text-decoration: none;
-}
-.ui-post-author, .ui-post-date{
-  padding: 5px 0;
-}
-.ui-post{
-  border-bottom: 1px dotted #999999;
+.avatar-infos{
+    text-align: center;
+    font-size: 14px;
 }
 </style>

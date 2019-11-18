@@ -2,7 +2,7 @@
 set -e
 
 # 构建 生成静态文件
-vuepress dev blog
+vuepress build blog
 
 # 导航到构建输出目录
 cd blog/.vuepress/dist

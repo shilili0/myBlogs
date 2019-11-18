@@ -10,6 +10,7 @@ module.exports = {
     modifyBlogPluginOptions(blogPluginOptions) {
       return blogPluginOptions
     },
+     tags: "/tags",
     /**
      * Ref: https://vuepress-theme-blog.ulivz.com/#nav
      */
@@ -23,24 +24,10 @@ module.exports = {
         link: '/tag/',
       },
       {
-        text: '我的信息',
+        text: '个人中心',
         link: '/myInfos/',
-        items: {
-          '/foo/': [
-            '',
-            'one',
-            'two'
-          ],
-        }
       },
     ],
-    sidebar: {
-      '/foo/': [
-        '',
-        'one',
-        'two'
-      ],
-    },
     sidebarDepth: 2,
 
     /**
